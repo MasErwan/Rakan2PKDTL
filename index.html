@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Drawing with Navigation</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            box-sizing: border-box;
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+            flex: 1 1 auto;
+            min-width: 200px;
+        }
+        .header-left img {
+            max-width: 50px;
+            margin-right: 10px;
+        }
+        .header-center {
+            text-align: center;
+            flex: 1 1 auto;
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+            flex: 1 1 auto;
+            justify-content: flex-end;
+            min-width: 200px;
+        }
+        .navigation {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .navigation h2 {
+            margin: 0;
+            margin-right: 10px;
+        }
+        .navigation ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .navigation li {
+            margin-left: 10px;
+        }
+        .navigation a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        .navigation a:hover {
+            color: #FFA500;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .autoslide {
+            text-align: center;
+            width: 100%;
+            max-width: 900px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .autoslide img {
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: none;
+            cursor: pointer;
+        }
+        .autoslide .prev,
+        .autoslide .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 18px;
+        }
+        .autoslide .prev {
+            left: 10px;
+        }
+        .autoslide .next {
+            right: 10px;
+        }
+        .drawing-area {
+            background-color: #fff;
+            border: 10px solid #ccc;
+            cursor: crosshair;
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .drawing-area h1 {
+            color: red;
+        }
+        .drawing-area .subheading {
+            font-size: 1em;
+        }
+        .ihp-breakdown__content-promo {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 900px;
+        }
+        .ihp-breakdown__content-promo-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        .ihp-breakdown__content-promo-cta .promo-cta {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .ihp-breakdown__content-promo-cta img {
+            max-width: 100%;
+            height: auto;
+        }
+        .util-button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+        .ihp-breakdown__grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            width: 100%;
+            max-width: 900px;
+        }
+        .ihp-breakdown__grid-intro,
+        .ihp-breakdown__grid-cards-item {
+            flex: 1 1 200px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .ihp-breakdown__grid-cards-item img {
+            max-width: 100%;
+            height: auto;
+        }
+        .ihp-breakdown__grid-cards-item a {
+            text-decoration: none;
+            color: #333;
+        }
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .header-left, .header-right {
+                justify-content: center;
+            }
+            .autoslide, .drawing-area, .ihp-breakdown__content-promo {
+                padding: 10px;
+            }
+            .navigation ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            .navigation li {
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <img src="C:\Users\pkd timur laut\Desktop\Sumber\MyHTMLProject\Logo\Logo_KKM.jfif" alt="Logo">
+            <div>
+                <h1>Rakan Pejabat Kesihatan Daerah Timur Laut</h1>
+                <h2>Hebahan aktiviti dan program PKD Timur Laut</h2>
+            </div>
+        </div>
+        <div class="header-center">
+            <!-- Placeholder for center content if needed -->
+        </div>
+        <div class="header-right">
+            <div class="navigation">
+                <ul>
+                    <li><a href="borang.html">|Borang|</a></li>
+                    <li><a href="tindakan-pegawai.html">|Tindakan Pegawai|</a></li>
+                    <li><a href="index.html">|Kongsi Fail|</a></li>
+                    <li><a href="directori.html">|Directori|</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="autoslide" id="autoslide">
+            <img src="C:\Users\pkd timur laut\Desktop\Sumber\MyHTMLProject\Logo\Semakan.png" alt="Slide 1" onclick="window.open('https://semakerjaya.moh.gov.my/semakan.php', '_blank')">
+            <img src="C:\Users\pkd timur laut\Desktop\Sumber\MyHTMLProject\Logo\Celik.png" alt="Slide 2" onclick="window.open('https://www.celikdigital.gov.my/', '_blank')">
+            <img src="C:\Users\pkd timur laut\Desktop\Sumber\MyHTMLProject\Logo\hrmis.jpg" alt="Slide 3" onclick="window.open('https://hrmis2.eghrmis.gov.my/HRMISNET/Common/Main/Login.aspx', '_blank')">
+            <img src="C:\Users\pkd timur laut\Desktop\Sumber\MyHTMLProject\Logo\teras.png" alt="Slide 4" onclick="window.open('https://teras.spa.gov.my/secure/login', '_blank')">
+            <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
+            <button class="next" onclick="plusSlides(1)">&#10095;</button>
+        </div>
+        <div class="drawing-area" id="drawingArea">
+            <h1>Pemakluman Penting!!</h1>
+            <h2>- PASTIKAN MAKLUMAT HANYA DIHANTAR MELALUI SALURAN RASMI -</h2>
+            <p class="subheading">Terima kasih kerana bekerjasama</p>
+        </div>
+    </div>
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let slides = document.querySelectorAll("#autoslide img");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            slides[slideIndex-1].style.display = "block";
+            setTimeout(showSlides, 3000); // Change image every 3 seconds
+        }
+
+        function plusSlides(n) {
+            slideIndex += n;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            if (slideIndex < 1) {slideIndex = slides.length}
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex-1].style.display = "block";
+        }
+    </script>
+</body>
+</html>
