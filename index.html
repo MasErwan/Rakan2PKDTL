@@ -206,7 +206,7 @@
 <body>
     <div class="header">
         <div class="header-left">
-            <img src="C:\Users\pkd timur laut\Desktop\Sumber\MyHTMLProject\Logo\Logo_KKM.jfif" alt="Logo">
+            <img src="https://maserwan.github.io/Rakan2PKDTL/Logo/Logo_KKM.jfif" alt="Logo">
             <div>
                 <h1>Rakan Pejabat Kesihatan Daerah Timur Laut</h1>
                 <h2>Hebahan aktiviti dan program PKD Timur Laut</h2>
@@ -224,24 +224,67 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="autoslide" id="autoslide">
-            <div class="ihp-breakdown__content-promo">
-                <img src="https://maserwan.github.io/Rakan2PKDTL/Logo/Semakan.png" alt="Slide 1" onclick="window.open('https://semakerjaya.moh.gov.my/semakan.php', '_blank')" class="active">
-                <img src="https://maserwan.github.io/Rakan2PKDTL/Logo/Celik.png" alt="Slide 2" onclick="window.open('https://www.celikdigital.gov.my/', '_blank')">
-                <img src="https://maserwan.github.io/Rakan2PKDTL/Logo/hrmis.jpg" alt="Slide 3" onclick="window.open('https://hrmis2.eghrmis.gov.my/HRMISNET/Common/Main/Login.aspx', '_blank')">
-                <img src="https://maserwan.github.io/Rakan2PKDTL/Logo/kemaskinipendidikan.png" alt="Slide 4" onclick="window.open('https://hrmis2.eghrmis.gov.my/HRMISNET/Common/Main/Login.aspx', '_blank')">
+    
+To ensure the autoslide component is centered within the container and properly aligned on a computer view, you can modify the CSS as follows:
 
-                <!-- CTA button inside the slide -->
-                <div class="ihp-breakdown__content-promo-cta">
-                    <a href="https://docs.google.com/spreadsheets/u/1/d/1SwiXP1VnobszrAS_kiMScGWxys4XpD3G3tUsWsGr_E0/htmlview" target="_blank" class="promo">Daftar Penyertaan</a>
-                </div>
+CSS Adjustment
+css
+Copy code
+.container {
+    max-width: 900px; /* Set the maximum width of the container */
+    margin: 0 auto; /* Center the container */
+    padding: 20px;
+    box-sizing: border-box;
+}
 
-                <!-- Navigation buttons for the slide -->
-                <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
-                <button class="next" onclick="plusSlides(1)">&#10095;</button>
+.autoslide {
+    width: 100%; /* Make the autoslide take the full width of the container */
+    max-width: 900px; /* Ensure it doesn't exceed the container's width */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto 20px auto; /* Center the autoslide within the container */
+    position: relative;
+}
+
+.autoslide img {
+    width: 100%; /* Ensure images take the full width of their container */
+    height: auto;
+    display: none; /* Hide all images by default */
+}
+
+.autoslide img.active {
+    display: block; /* Show the active image */
+}
+Explanation:
+Container Centering: The .container is set to a maximum width of 900px, with margin: 0 auto; to center it on the page.
+Autoslide Centering: The .autoslide is centered using the same method and its width is constrained to 900px or less.
+Image Handling: The images inside .autoslide are set to take the full width of their parent container, ensuring proper scaling and centering.
+HTML Structure
+Make sure your HTML structure is intact:
+
+html
+Copy code
+<div class="container">
+    <div class="autoslide" id="autoslide">
+        <div class="ihp-breakdown__content-promo">
+            <img src="https://maserwan.github.io/Rakan2PKDTL/Logo/Semakan.png" alt="Slide 1" onclick="window.open('https://semakerjaya.moh.gov.my/semakan.php', '_blank')" class="active">
+            <img src="https://maserwan.github.io/Rakan2PKDTL/Logo/Celik.png" alt="Slide 2" onclick="window.open('https://www.celikdigital.gov.my/', '_blank')">
+            <img src="https://maserwan.github.io/Rakan2PKDTL/Logo/hrmis.jpg" alt="Slide 3" onclick="window.open('https://hrmis2.eghrmis.gov.my/HRMISNET/Common/Main/Login.aspx', '_blank')">
+            <img src="https://maserwan.github.io/Rakan2PKDTL/Logo/kemaskinipendidikan.png" alt="Slide 4" onclick="window.open('https://hrmis2.eghrmis.gov.my/HRMISNET/Common/Main/Login.aspx', '_blank')">
+            
+            <!-- CTA button inside the slide -->
+            <div class="ihp-breakdown__content-promo-cta">
+                <a href="https://docs.google.com/spreadsheets/u/1/d/1SwiXP1VnobszrAS_kiMScGWxys4XpD3G3tUsWsGr_E0/htmlview" target="_blank" class="promo">Daftar Penyertaan</a>
             </div>
+
+            <!-- Navigation buttons for the slide -->
+            <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
+            <button class="next" onclick="plusSlides(1)">&#10095;</button>
         </div>
+    </div>
+</div>
 
         <div class="drawing-area" id="drawingArea">
             <h1>Pemakluman Penting!!</h1>
