@@ -27,6 +27,36 @@ nav {
     gap: 1rem; /* Adds space between items */
 }
 
+.anythingWindow {
+    max-width: 1280px; /* Limit the maximum width */
+    margin: 0 auto; /* Center the container */
+    overflow: hidden; /* Hide any overflow */
+    position: relative;
+}
+
+.anythingBase {
+    display: flex; /* Use flexbox for easy alignment */
+    transition: left 0.5s ease-in-out; /* Smooth slide transition */
+}
+
+.panel {
+    flex: 0 0 100%; /* Ensure each panel takes full width */
+    max-width: 1280px;
+    height: 363px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pad {
+    width: 100%;
+    height: 100%;
+}
+
+.panel img {
+    width: 100%; /* Make images fully responsive */
+    height: 350px; /* Maintain consistent height */
+}
 .nav-menu li {
     display: inline; /* Ensures list items are inline */
 }
