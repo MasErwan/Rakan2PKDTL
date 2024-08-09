@@ -11,8 +11,8 @@
             padding: 0;
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
-            box-sizing: border-box;
         }
+
         .header {
             background-color: #333;
             color: #fff;
@@ -22,40 +22,22 @@
             align-items: center;
             flex-wrap: wrap;
         }
-        .header-left {
-            display: flex;
-            align-items: center;
-            flex: 1 1 auto;
-            min-width: 200px;
-        }
+
         .header-left img {
-            max-width: 50px;
+            max-width: 80px;
             margin-right: 10px;
         }
-        .header-center {
-            text-align: center;
-            flex: 1 1 auto;
-        }
-        .header-right {
-            display: flex;
-            align-items: center;
-            flex: 1 1 auto;
-            justify-content: flex-end;
-            min-width: 200px;
-        }
-        .navigation {
-            background-color: #fff;
-            border: 1px solid #ccc;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .navigation h2 {
+
+        .header-left h1 {
+            font-size: 1.2em;
             margin: 0;
-            margin-right: 10px;
         }
+
+        .header-left h2 {
+            font-size: 0.9em;
+            margin: 0;
+        }
+
         .navigation ul {
             list-style-type: none;
             padding: 0;
@@ -63,29 +45,28 @@
             display: flex;
             flex-wrap: wrap;
         }
+
         .navigation li {
             margin-left: 10px;
         }
+
         .navigation a {
             text-decoration: none;
-            color: #333;
+            color: #fff;
             font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 3px;
         }
+
         .navigation a:hover {
-            color: #FFA500;
+            background-color: #FFA500;
         }
+
         .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 20px;
-            padding-left: 10px;
-            padding-right: 10px;
-            min-height: 100vh;
-            box-sizing: border-box;
+            padding: 20px;
         }
+
         .autoslide {
-            text-align: center;
             width: 100%;
             max-width: 900px;
             background-color: #fff;
@@ -95,15 +76,16 @@
             margin-bottom: 20px;
             position: relative;
         }
+
         .autoslide img {
-            max-width: 100%;
+            width: 100%;
             height: auto;
             object-fit: cover;
             display: none;
             cursor: pointer;
         }
-        .autoslide .prev,
-        .autoslide .next {
+
+        .autoslide .prev, .autoslide .next {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -114,28 +96,30 @@
             padding: 10px;
             font-size: 18px;
         }
+
         .autoslide .prev {
             left: 10px;
         }
+
         .autoslide .next {
             right: 10px;
         }
+
         .drawing-area {
             background-color: #fff;
             border: 10px solid #ccc;
             cursor: crosshair;
-            width: 100%;
-            max-width: 900px;
-            text-align: center;
+            min-height: 300px;
             padding: 20px;
             margin-bottom: 20px;
+            box-sizing: border-box;
         }
+
         .drawing-area h1 {
             color: red;
+            font-size: 1.5em;
         }
-        .drawing-area .subheading {
-            font-size: 1em;
-        }
+
         .ihp-breakdown__content-promo {
             background-color: #fff;
             border: 1px solid #ccc;
@@ -143,74 +127,73 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
             text-align: center;
-            width: 100%;
-            max-width: 900px;
         }
-        .ihp-breakdown__content-promo-cta {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 10px;
-        }
-        .ihp-breakdown__content-promo-cta .promo-cta {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-        .ihp-breakdown__content-promo-cta img {
-            max-width: 100%;
-            height: auto;
-        }
-        .util-button {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-left: 10px;
-        }
+
         .ihp-breakdown__grid {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
             justify-content: center;
-            width: 100%;
-            max-width: 900px;
         }
-        .ihp-breakdown__grid-intro,
+
         .ihp-breakdown__grid-cards-item {
-            flex: 1 1 200px;
             background-color: #fff;
             border: 1px solid #ccc;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
+            width: 100%;
+            max-width: 200px;
+            box-sizing: border-box;
         }
-        .ihp-breakdown__grid-cards-item img {
-            max-width: 100%;
-            height: auto;
-        }
-        .ihp-breakdown__grid-cards-item a {
-            text-decoration: none;
-            color: #333;
-        }
+
         @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                text-align: center;
+            .header-left img {
+                max-width: 60px;
             }
-            .header-left, .header-right {
-                justify-content: center;
+
+            .header-left h1 {
+                font-size: 1em;
             }
-            .autoslide, .drawing-area, .ihp-breakdown__content-promo {
-                padding: 10px;
+
+            .header-left h2 {
+                font-size: 0.8em;
             }
+
             .navigation ul {
                 flex-direction: column;
                 align-items: center;
             }
+
             .navigation li {
                 margin: 5px 0;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            .autoslide {
+                padding: 10px;
+            }
+
+            .drawing-area {
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-left img {
+                max-width: 50px;
+            }
+
+            .header-left h1, .header-left h2 {
+                font-size: 0.8em;
+            }
+
+            .navigation a {
+                font-size: 0.9em;
+                padding: 3px 7px;
             }
         }
     </style>
@@ -223,9 +206,6 @@
                 <h1>Rakan Pejabat Kesihatan Daerah Timur Laut</h1>
                 <h2>Hebahan aktiviti dan program PKD Timur Laut</h2>
             </div>
-        </div>
-        <div class="header-center">
-            <!-- Placeholder for center content if needed -->
         </div>
         <div class="header-right">
             <div class="navigation">
@@ -249,8 +229,40 @@
         </div>
         <div class="drawing-area" id="drawingArea">
             <h1>Pemakluman Penting!!</h1>
-            <h2>- PASTIKAN MAKLUMAT HANYA DIHANTAR MELALUI SALURAN RASMI -</h2>
-            <p class="subheading">Terima kasih kerana bekerjasama</p>
+            <h2>- PASTIKAN MAKLUMAT HRMIS TERKINI, TEPAT DAN BERINTEGRITI</h2>
+            <div class="subheading">Adalah diingatkan supaya pemilik kompetensi/pentadbir sentiasa menyemak dan memastikan maklumat yang dimasukkan ke dalam HRMIS adalah yang terkini, tepat dan berintegriti</div>
+            <h2>- KURSUS EPSA -</h2>
+            <div class="subheading">Pegawai yang terlibat boleh mengambil kursus tambahan dengan mendaftar di dalam e-Pembelajaran Sektor Awam</div>
+            <h2>- IKLAN KENAIKAN PANGKAT -</h2>
+            <div class="subheading">Semak kenaikan pangkat</div>
+        </div>
+        <div class="ihp-breakdown__content-promo">
+            <h2>Hebahan</h2>
+            <h2>Aktiviti PKD Timur Laut</h2>
+            <p>PKDTL Fun Day pada 7 September hingga 8 September 2024</p>
+            <div class="ihp-breakdown__content-promo">
+                <div class="ihp-breakdown__content-promo-cta">
+                    <a href="https://docs.google.com/spreadsheets/u/1/d/1SwiXP1VnobszrAS_kiMScGWxys4XpD3G3tUsWsGr_E0/htmlview" target="_blank" class="promo"> Daftar Penyertaan</a>
+                </div>
+            </div>
+        </div>
+        <div class="ihp-breakdown__grid">
+            <div class="ihp-breakdown__grid-cards-item">
+                <h3>Borang Semakan Latihan</h3>
+                <p>Kemaskini Maklumat Latihan dan Penilaian Prestasi</p>
+            </div>
+            <div class="ihp-breakdown__grid-cards-item">
+                <h3>Tindakan Pegawai</h3>
+                <p>Semak Status Tindakan Pegawai</p>
+            </div>
+            <div class="ihp-breakdown__grid-cards-item">
+                <h3>Kongsi Fail</h3>
+                <p>Muat Naik dan Kongsi Dokumen</p>
+            </div>
+            <div class="ihp-breakdown__grid-cards-item">
+                <h3>Directori</h3>
+                <p>Maklumat Pegawai dan Jabatan</p>
+            </div>
         </div>
     </div>
     <script>
@@ -258,24 +270,19 @@
         showSlides();
 
         function showSlides() {
-            let slides = document.querySelectorAll("#autoslide img");
+            const slides = document.querySelectorAll("#autoslide img");
             for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
+                slides[i].style.display = "none";  
             }
             slideIndex++;
-            if (slideIndex > slides.length) {slideIndex = 1}
-            slides[slideIndex-1].style.display = "block";
-            setTimeout(showSlides, 3000); // Change image every 3 seconds
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 5000); // Change image every 5 seconds
         }
 
         function plusSlides(n) {
-            slideIndex += n;
-            if (slideIndex > slides.length) {slideIndex = 1}
-            if (slideIndex < 1) {slideIndex = slides.length}
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slides[slideIndex-1].style.display = "block";
+            slideIndex += n - 1;
+            showSlides();
         }
     </script>
 </body>
